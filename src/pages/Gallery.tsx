@@ -19,21 +19,25 @@ const Gallery: React.FC = () => {
     <section className="py-24 bg-gradient-to-b from-[#A3D9E1] to-[#B9E5C0]">
       <h2 className="text-6xl font-semibold mb-4 text-center text-transparent bg-clip-text bg-gradient-to-r from-[#343A40] to-[#495057]">Our Work</h2>
       <p className="text-lg text-center text-gray-700 mb-10">Explore our collection of craftsmanship and creativity.</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {[...Array(12)].map((_, index) => {
-          const imageUrl = `https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop`;
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {['https://images.unsplash.com/photo-1521747116042-5a810fda9664?w=800&h=600&fit=crop',
+          'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
+          'https://images.unsplash.com/photo-1555699600-3e8c9d1f6c0d?w=800&h=600&fit=crop',
+          'https://images.unsplash.com/photo-1612836621280-19e4e052cc94?w=800&h=600&fit=crop',
+          'https://images.unsplash.com/photo-1612836622172-3c8f1a1b1a25?w=800&h=600&fit=crop',
+          'https://images.unsplash.com/photo-1510070004713-bf4bd9e4b1a1?w=800&h=600&fit=crop'].map((imageUrl, index) => {
           return (
             <div key={index} className="overflow-hidden rounded-2xl shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl cursor-pointer" onClick={() => openModal(imageUrl)}>
-              <img src={imageUrl} alt={`Gallery Item ${index + 1}`} className="w-full h-full object-cover" />
+              <img src={imageUrl} alt={`Gallery Item ${index + 1}`} className="w-full h-full object-cover transition-transform duration-300 transform hover:scale-105" />
             </div>
           );
         })}
       </div>
 
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className="fixed inset-0 flex items-center justify-center bg-black/75">
-        <div className="relative">
+        <div className="relative bg-white rounded-3xl overflow-hidden shadow-xl">
           <button className="absolute top-4 right-4 text-white text-2xl" onClick={closeModal}>✖</button>
-          <img src={currentImage} alt="Current View" className="max-w-full max-h-screen" />
+          <img src={currentImage} alt="Current View" className="max-w-full max-h-screen object-cover" />
         </div>
       </Modal>
     </section> 
